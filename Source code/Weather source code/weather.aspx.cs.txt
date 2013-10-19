@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MyWeather;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        MyWeather.Weather obj = new Weather();
+        ForecastReturn obj2;
+        Forecast[] obj3;
+        temp obj4;
+        obj2 = obj.GetCityForecastByZIP(TextBox1.Text);
+        obj3 = obj2.ForecastResult;
+        lblcity.Text = obj2.City;
+        lblstate.Text = obj2.State;
+        obj4 = obj3[0].Temperatures;
+        lbltemparature.Text = obj4.DaytimeHigh;
+        Image1.Visible = true;
+
+
+
+    }
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+}
+
+
